@@ -42,4 +42,15 @@ export default class Router {
 			});
 		});
 	}
+
+	reLaunch({ url, success = ()=>{} }){
+		this.beforeCreate(url, ()=>{
+			wx.reLaunch({
+				url,
+				success:()=>{
+					this.afterCreate(success);
+				}
+			});
+		});
+	}
 };
